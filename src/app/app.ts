@@ -9,18 +9,18 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App implements OnInit {
   // Recebe o ID do Shell App via Input dinâmico
-  @Input() set idUsuario(val: string) {
-    this._idUsuario.set(val);
+  @Input() set userId(val: string) {
+    this._userId.set(val);
     this.carregarContextoUsuario(val);
   }
   
-  private _idUsuario = signal<string | null>(null);
-  public idUsuarioContext = this._idUsuario.asReadonly();
+  private _userId = signal<string | null>(null);
+  public userIdContext = this._userId.asReadonly();
 
   protected readonly title = signal('nutriplanner');
 
   ngOnInit() {
-    if (!this._idUsuario()) {
+    if (!this._userId()) {
       console.warn('[MFE]: Inicializado sem contexto de usuário!');
     }
   }
